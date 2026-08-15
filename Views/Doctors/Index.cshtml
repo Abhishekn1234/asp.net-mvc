@@ -1,0 +1,152 @@
+@model IEnumerable<ClinicAppointmentManagement.Models.Doctor>
+
+@{
+    ViewData["Title"] = "Doctors";
+}
+
+<div class="w-full">
+
+    <!-- Page Header -->
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-5">
+
+        <div>
+            <h2 class="text-2xl sm:text-3xl font-bold text-gray-800">
+                Doctors
+            </h2>
+
+            <p class="text-sm text-gray-500 mt-1">
+                Manage doctors and their information
+            </p>
+        </div>
+
+        <a asp-action="Create"
+           class="inline-flex items-center justify-center px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition no-underline w-full sm:w-auto">
+
+            + Add Doctor
+
+        </a>
+
+    </div>
+
+
+    <!-- Doctors Table -->
+    <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+
+        <!-- Horizontal scrolling on mobile -->
+        <div class="overflow-x-auto">
+
+            <table class="w-full min-w-[750px] text-sm text-left">
+
+                <thead class="bg-gray-50 border-b border-gray-200">
+
+                    <tr>
+
+                        <th class="px-4 sm:px-6 py-3.5 font-semibold text-gray-700 whitespace-nowrap">
+                            Name
+                        </th>
+
+                        <th class="px-4 sm:px-6 py-3.5 font-semibold text-gray-700 whitespace-nowrap">
+                            Specialization
+                        </th>
+
+                        <th class="px-4 sm:px-6 py-3.5 font-semibold text-gray-700 whitespace-nowrap">
+                            Phone
+                        </th>
+
+                        <th class="px-4 sm:px-6 py-3.5 font-semibold text-gray-700 whitespace-nowrap">
+                            Email
+                        </th>
+
+                        <th class="px-4 sm:px-6 py-3.5 font-semibold text-gray-700 whitespace-nowrap">
+                            Actions
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody class="divide-y divide-gray-200">
+
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var doctor in Model)
+                        {
+                            <tr class="hover:bg-gray-50 transition">
+
+                                <td class="px-4 sm:px-6 py-4 font-medium text-gray-800 whitespace-nowrap">
+                                    @doctor.Name
+                                </td>
+
+                                <td class="px-4 sm:px-6 py-4 text-gray-600 whitespace-nowrap">
+                                    @doctor.Specialization
+                                </td>
+
+                                <td class="px-4 sm:px-6 py-4 text-gray-600 whitespace-nowrap">
+                                    @doctor.Phone
+                                </td>
+
+                                <td class="px-4 sm:px-6 py-4 text-gray-600 whitespace-nowrap">
+                                    @doctor.Email
+                                </td>
+
+                                <td class="px-4 sm:px-6 py-4">
+
+                                    <div class="flex flex-wrap gap-2">
+
+                                        <a asp-action="Details"
+                                           asp-route-id="@doctor.DoctorId"
+                                           class="inline-flex items-center justify-center px-3 py-1.5 bg-cyan-500 hover:bg-cyan-600 text-white text-sm font-medium rounded-md transition no-underline">
+
+                                            View
+
+                                        </a>
+
+                                        <a asp-action="Edit"
+                                           asp-route-id="@doctor.DoctorId"
+                                           class="inline-flex items-center justify-center px-3 py-1.5 bg-yellow-500 hover:bg-yellow-600 text-white text-sm font-medium rounded-md transition no-underline">
+
+                                            Edit
+
+                                        </a>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+
+                            <td colspan="5"
+                                class="px-4 py-10 text-center">
+
+                                <div class="text-gray-500">
+
+                                    <p class="text-base font-medium">
+                                        No doctors found.
+                                    </p>
+
+                                    <p class="text-sm mt-1">
+                                        Add a doctor to get started.
+                                    </p>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>

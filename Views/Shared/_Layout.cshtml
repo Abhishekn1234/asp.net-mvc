@@ -1,0 +1,244 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+
+    <title>
+        @ViewData["Title"] - Clinic Appointment Management
+    </title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+          href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/@@tailwindcss/browser@4"></script>
+
+    <!-- Custom Application CSS -->
+    <link rel="stylesheet"
+          href="~/css/site.css"
+          asp-append-version="true" />
+
+    <link rel="stylesheet"
+          href="~/ClinicAppointmentManagement.styles.css"
+          asp-append-version="true" />
+
+</head>
+
+
+<body class="bg-gray-50 text-gray-800 min-h-screen">
+
+
+    <!-- ================================= -->
+    <!-- NAVBAR -->
+    <!-- ================================= -->
+
+    <header class="bg-white border-b border-gray-200 shadow-sm">
+
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="flex items-center justify-between min-h-16 py-3">
+
+                <!-- Logo -->
+
+                <div class="flex items-center">
+
+                    <a asp-controller="Home"
+                       asp-action="Index"
+                       class="text-lg sm:text-xl font-bold text-blue-600 hover:text-blue-700 transition no-underline whitespace-nowrap">
+
+                        Clinic Appointment Management
+
+                    </a>
+
+                </div>
+
+
+                <!-- Desktop Navigation -->
+
+                <div class="hidden md:flex items-center gap-1 lg:gap-2">
+
+                    <a asp-controller="Doctors"
+                       asp-action="Index"
+                       class="px-3 lg:px-4 py-2 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 font-medium transition no-underline">
+
+                        Doctors
+
+                    </a>
+
+                    <a asp-controller="Patients"
+                       asp-action="Index"
+                       class="px-3 lg:px-4 py-2 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 font-medium transition no-underline">
+
+                        Patients
+
+                    </a>
+
+                    <a asp-controller="Appointments"
+                       asp-action="Index"
+                       class="px-3 lg:px-4 py-2 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 font-medium transition no-underline">
+
+                        Appointments
+
+                    </a>
+
+                </div>
+
+
+                <!-- Mobile Menu Button -->
+
+                <button type="button"
+                        id="mobileMenuButton"
+                        class="md:hidden inline-flex items-center justify-center p-2 rounded-lg text-gray-600 hover:bg-gray-100 hover:text-blue-600 focus:outline-none"
+                        aria-label="Toggle navigation">
+
+                    <svg id="menuIcon"
+                         xmlns="http://www.w3.org/2000/svg"
+                         class="w-6 h-6"
+                         fill="none"
+                         viewBox="0 0 24 24"
+                         stroke="currentColor">
+
+                        <path stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M4 6h16M4 12h16M4 18h16" />
+
+                    </svg>
+
+
+                    <svg id="closeIcon"
+                         xmlns="http://www.w3.org/2000/svg"
+                         class="w-6 h-6 hidden"
+                         fill="none"
+                         viewBox="0 0 24 24"
+                         stroke="currentColor">
+
+                        <path stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M6 18L18 6M6 6l12 12" />
+
+                    </svg>
+
+                </button>
+
+            </div>
+
+
+            <!-- Mobile Navigation -->
+
+            <div id="mobileMenu"
+                 class="hidden md:hidden border-t border-gray-100 py-3">
+
+                <div class="flex flex-col space-y-1">
+
+                    <a asp-controller="Doctors"
+                       asp-action="Index"
+                       class="block px-4 py-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 font-medium transition no-underline">
+
+                        Doctors
+
+                    </a>
+
+                    <a asp-controller="Patients"
+                       asp-action="Index"
+                       class="block px-4 py-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 font-medium transition no-underline">
+
+                        Patients
+
+                    </a>
+
+                    <a asp-controller="Appointments"
+                       asp-action="Index"
+                       class="block px-4 py-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 font-medium transition no-underline">
+
+                        Appointments
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ================================= -->
+    <!-- MAIN CONTENT -->
+    <!-- ================================= -->
+
+    <main role="main"
+          class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 sm:py-8">
+
+        @RenderBody()
+
+    </main>
+
+
+    <!-- ================================= -->
+    <!-- jQuery -->
+    <!-- ================================= -->
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+
+    <!-- ================================= -->
+    <!-- Bootstrap JavaScript -->
+    <!-- ================================= -->
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <!-- ================================= -->
+    <!-- Mobile Navigation -->
+    <!-- ================================= -->
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const menuButton = document.getElementById("mobileMenuButton");
+            const mobileMenu = document.getElementById("mobileMenu");
+            const menuIcon = document.getElementById("menuIcon");
+            const closeIcon = document.getElementById("closeIcon");
+
+            menuButton.addEventListener("click", function () {
+
+                mobileMenu.classList.toggle("hidden");
+
+                menuIcon.classList.toggle("hidden");
+                closeIcon.classList.toggle("hidden");
+
+            });
+
+        });
+
+    </script>
+
+
+    <!-- ================================= -->
+    <!-- Custom JavaScript -->
+    <!-- ================================= -->
+
+    <script src="~/js/site.js"
+            asp-append-version="true"></script>
+
+
+    <!-- ================================= -->
+    <!-- Razor Scripts Section -->
+    <!-- ================================= -->
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+@model ClinicAppointmentManagement.Models.Doctor
+
+@{
+    ViewData["Title"] = "Doctor Details";
+}
+
+<div class="container mt-4">
+
+    <h2>Doctor Details</h2>
+
+    <div class="card">
+
+        <div class="card-body">
+
+            <h4>@Model.Name</h4>
+
+            <p>
+                <strong>Specialization:</strong>
+                @Model.Specialization
+            </p>
+
+            <p>
+                <strong>Phone:</strong>
+                @Model.Phone
+            </p>
+
+            <p>
+                <strong>Email:</strong>
+                @Model.Email
+            </p>
+
+            <p>
+                <strong>Total Appointments:</strong>
+                @Model.Appointments.Count
+            </p>
+
+            <a asp-action="Edit"
+               asp-route-id="@Model.DoctorId"
+               class="btn btn-warning">
+                Edit
+            </a>
+
+            <a asp-action="Index"
+               class="btn btn-secondary">
+                Back
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
