@@ -231,3 +231,4 @@ C:\mvc\ClinicAppointmentManagement\obj\Debug\net11.0\refint\ClinicAppointmentMan
 C:\mvc\ClinicAppointmentManagement\obj\Debug\net11.0\ClinicAppointmentManagement.pdb
 C:\mvc\ClinicAppointmentManagement\obj\Debug\net11.0\ClinicAppointmentManagement.genruntimeconfig.cache
 C:\mvc\ClinicAppointmentManagement\obj\Debug\net11.0\ref\ClinicAppointmentManagement.dll
+C:\mvc\ClinicAppointmentManagement\obj\Debug\net11.0\ClinicAppointmentManagement.sourcelink.json
